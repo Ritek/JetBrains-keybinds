@@ -1,1 +1,115 @@
-/home/ritek/.ideavimrc
+" .ideavimrc is a configuration file for IdeaVim plugin. It uses
+"   the same commands as the original .vimrc configuration.
+" You can find a list of commands here: https://jb.gg/h38q75
+" Find more examples here: https://jb.gg/share-ideavimrc
+
+let mapleader=" "
+
+set idearefactormode=keep
+set ideamarks=true
+" Allows gc* for commentary
+set commentary
+" Ctrl + / for single line and Ctrl + Shift + / also work
+
+"" -- Suggested options --
+" Show a few lines of context around the cursor. Note that this makes the
+" text scroll if you mouse-click near the start or end of the window.
+set scrolloff=5
+
+" Do incremental searching.
+set incsearch
+
+" Don't use Ex mode, use Q for formatting.
+map Q gq
+
+" --- Enable IdeaVim plugins https://jb.gg/ideavim-plugins
+
+" Highlight copied text
+Plug 'machakann/vim-highlightedyank'
+" Commentary plugi
+Plug 'tpope/vim-commentary'
+
+
+"" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
+"" Map \r to the Reformat Code action
+"map \r <Action>(ReformatCode)
+
+"" Map <leader>d to start debug
+"map <leader>d <Action>(Debug)
+
+"" Map \b to toggle the breakpoint on the current line
+"map \b <Action>(ToggleLineBreakpoint)
+
+"" make CTRL+SHIFT+V paste from clipboard
+nmap <C-S-V> "+p
+vmap <C-S-V> "+p
+imap <C-S-V> <C-R>+
+
+"" make HOME+Y copy to clipboard
+nmap <Home-Y> "+y
+vmap <Home-Y> "+y
+imap <Home-Y> <C-R>+
+
+"" make HOME+X cut to clipboard
+nmap <Home-X> "+x
+vmap <Home-X> "+x
+imap <Home-X> <C-R>+
+
+"" make CTRL+J join lines
+nmap <C-J> J
+vmap <C-J> J
+imap <C-J> <Esc>J
+
+"" make highlighted row move up/down with SHIFT+K and SHIFT+J
+vmap <S-K> :m '<-2<CR>gv=gv
+vmap <S-J> :m '>+1<CR>gv=gv
+
+" Folding
+" Folding is build in
+" zo, zc, zR, zM, or simply za
+
+
+" Navigate general UI lists (Search Everywhere, etc.)
+" Must be changed in the IDE setting
+" Same with Ctrl+Y for selection
+
+" Trigger search and replace on highlighted
+" Use standard Ctrl + R, mapping is not working
+
+" Open terminal
+nnoremap <C-S-T> :action ActivateTerminalToolWindow<CR>
+" nnoremap <leader>t :action Terminal.OpenInTerminal<CR>
+
+" Code actions
+" Show Context Actions
+nnoremap ga :action ShowIntentionActions<CR>
+
+nnoremap <leader>b :action ShowNavBar<CR>
+
+" Show Context Menu
+nnoremap gh :action ShowPopupMenu<CR>
+
+" Show Refactor This window
+nnoremap <leader>r :action Refactorings.QuickListPopupAction<CR>
+
+" Go to declaration
+nnoremap gd :action GotoDeclaration<CR>
+
+" To to definition
+nnoremap gD :action QuickDefinition<CR>
+
+" Go to implementation
+nnoremap gi :action GotoImplementation<CR>
+
+" To to test
+nnoremap gn :action GotoTest<CR>
+
+" Switch focus to file tree
+nnoremap <leader>pv :action ActivateProjectToolWindow<CR>
+
+" Show error
+nnoremap <leader>e :action ShowErrorDescription<CR>
+nnoremap ge :action ShowErrorDescription<CR>
+
+" Hide everything / Zen mode
+nnoremap <c-z> :action ToggleDistractionFreeMode<CR>
