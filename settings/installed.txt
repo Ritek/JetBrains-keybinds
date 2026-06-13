@@ -1,0 +1,3 @@
+IdeaVIM
+com.intellij.plugins.vscodekeymap
+com.github.copilot
